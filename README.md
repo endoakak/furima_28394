@@ -22,3 +22,71 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+# テーブル設計
+
+## users テーブル
+
+| Column    | Type   | Options     |
+| --------- | ------ | ----------- |
+| nick_name | string | null: false |
+| email     | string | null: false |
+| password  | string | null: false |
+| name      | string | null: false |
+| name_kana | string | null: false |
+| birthday  | date   | null: false |
+
+### Association
+- has_many :items
+- has_many :deals
+
+## items テーブル
+
+| Column        | Type    | Options     |
+| ------------- | ------- | ----------- |
+| name          | string  | null: false |
+| text          | string  | null: false |
+| category      | string  | null: false |
+| condition     | string  | null: false |
+| delivery_fee  | string  | null: false |
+| delivery_from | string  | null: false |
+| delivery_days | date    | null: false |
+| price         | integer | null: false |
+| user_id       | references | null: false, foreign_key: true |
+
+### Association
+- belongs_to :user
+- has_one :deal
+
+## deals テーブル
+
+| Column        | Type    | Options     |
+| ------------- | ------- | ----------- |
+| card_number   | integer | null: false |
+| card_expiration_date | integer | null: false |
+| card_code     | integer | null: false |
+| user_id       | references | null: false, foreign_key: true |
+| item_id       | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :user
+- belongs_to :item
+- has_one :shipment
+
+## shipments テーブル
+
+| Column       | Type    | Options     |
+| ------------ | ------- | ----------- |
+| post_code    | integer | null: false |
+| prefecture   | string  | null: false |
+| city         | string  | null: false |
+| address      | string  | null: false |
+| building     | string  |             |
+| phone_number | integer | null: false |
+| deal_id      | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :deal
