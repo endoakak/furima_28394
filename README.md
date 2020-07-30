@@ -28,14 +28,16 @@ Things you may want to cover:
 
 ## users テーブル
 
-| Column    | Type   | Options     |
-| --------- | ------ | ----------- |
-| nick_name | string | null: false |
-| email     | string | null: false |
-| password  | string | null: false |
-| name      | string | null: false |
-| name_kana | string | null: false |
-| birthday  | date   | null: false |
+| Column          | Type   | Options     |
+| --------------- | ------ | ----------- |
+| nick_name       | string | null: false |
+| email           | string | null: false |
+| password        | string | null: false |
+| first_name      | string | null: false |
+| last_name       | string | null: false |
+| first_name_kana | string | null: false |
+| last_name_kana  | string | null: false |
+| birthday        | date   | null: false |
 
 ### Association
 - has_many :items
@@ -46,7 +48,7 @@ Things you may want to cover:
 | Column        | Type    | Options     |
 | ------------- | ------- | ----------- |
 | name          | string  | null: false |
-| text          | string  | null: false |
+| text          | text    | null: false |
 | category      | string  | null: false |
 | condition     | string  | null: false |
 | delivery_fee  | string  | null: false |
