@@ -65,9 +65,6 @@ Things you may want to cover:
 
 | Column        | Type    | Options     |
 | ------------- | ------- | ----------- |
-| card_number   | integer | null: false |
-| card_expiration_date | integer | null: false |
-| card_code     | integer | null: false |
 | user_id       | references | null: false, foreign_key: true |
 | item_id       | references | null: false, foreign_key: true |
 
