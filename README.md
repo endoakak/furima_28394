@@ -50,11 +50,11 @@ Things you may want to cover:
 | name          | string  | null: false |
 | text          | text    | null: false |
 | price         | integer | null: false |
-| category_id   | integer | null: false, foreign_key: true |
-| condition_id  | integer | null: false, foreign_key: true |
-| delivery_fee_id | integer | null: false, foreign_key: true |
-| delivery_from_id | integer | null: false, foreign_key: true |
-| delivery_days_id | integer | null: false, foreign_key: true |
+| category_id   | integer | null: false |
+| condition_id  | integer | null: false |
+| delivery_fee_id | integer | null: false |
+| delivery_from_id | integer | null: false |
+| delivery_days_id | integer | null: false |
 | user_id       | references | null: false, foreign_key: true |
 
 ### Association
