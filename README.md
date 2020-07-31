@@ -49,11 +49,6 @@ Things you may want to cover:
 | ------------- | ------- | ----------- |
 | name          | string  | null: false |
 | text          | text    | null: false |
-| category      | string  | null: false |
-| condition     | string  | null: false |
-| delivery_fee  | string  | null: false |
-| delivery_from | string  | null: false |
-| delivery_days | date    | null: false |
 | price         | integer | null: false |
 | user_id       | references | null: false, foreign_key: true |
 
