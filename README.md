@@ -54,7 +54,7 @@ Things you may want to cover:
 | condition_id  | integer | null: false |
 | delivery_fee_id | integer | null: false |
 | delivery_from_id | integer | null: false |
-| delivery_days_id | integer | null: false |
+| delivery_day_id | integer | null: false |
 | user_id       | references | null: false, foreign_key: true |
 
 ### Association
