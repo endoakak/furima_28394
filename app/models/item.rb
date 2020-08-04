@@ -17,7 +17,6 @@ class Item < ApplicationRecord
     validates :delivery_fee
     validates :delivery_from
     validates :delivery_day
-    validates :price
     validates :image
   end
 
@@ -28,4 +27,6 @@ class Item < ApplicationRecord
     validates :delivery_from_id
     validates :delivery_day_id
   end
+
+  validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
 end
