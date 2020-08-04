@@ -20,9 +20,9 @@ class ItemsController < ApplicationController
   private
 
   def move_to_signup
-    unless user_signed_in?
-      redirect_to new_user_registration_path
-    end
+    return if user_signed_in?
+    
+    redirect_to new_user_registration_path
   end
 
   def item_params

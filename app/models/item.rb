@@ -8,7 +8,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :delivery_fee
   belongs_to_active_hash :delivery_from
   belongs_to_active_hash :delivery_day
-  
+
   with_options presence: true do
     validates :name
     validates :text
@@ -20,7 +20,7 @@ class Item < ApplicationRecord
     validates :image
   end
 
-  with_options numericality: { other_than: 1, message: "must be selected"} do
+  with_options numericality: { other_than: 1, message: "must be selected" } do
     validates :category_id
     validates :condition_id
     validates :delivery_fee_id
@@ -30,7 +30,7 @@ class Item < ApplicationRecord
 
   validates :price, numericality: {
     greater_than_or_equal_to: 300,
-    less_than_or_equal_to: 9999999,
+    less_than_or_equal_to: 9_999_999,
     message: "must be a number between 300 and 9,999,999"
   }
 end
