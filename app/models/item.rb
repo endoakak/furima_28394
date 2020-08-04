@@ -1,5 +1,6 @@
 class Item < ApplicationRecord
   belongs_to :user
+  has_one_attached :image
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :category
@@ -17,6 +18,7 @@ class Item < ApplicationRecord
     validates :delivery_from
     validates :delivery_day
     validates :price
+    validates :image
   end
 
   with_options numericality: { other_than: 1, message: "must be selected"} do

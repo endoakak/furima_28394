@@ -34,7 +34,8 @@ class ItemsController < ApplicationController
       :delivery_fee_id,
       :delivery_from_id,
       :delivery_day_id,
-      :price
+      :price,
+      :image
     ).merge(user_id: current_user.id)
   end
 end
