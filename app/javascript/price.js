@@ -9,8 +9,6 @@ function price() {
     let profit = price - fee
     feeOutput.innerHTML = fee
     profitOutput.innerHTML = profit
-
-    e.preventDefault()
   })
 }
 
