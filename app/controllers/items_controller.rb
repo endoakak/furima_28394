@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  before_action :move_to_signup, except: [:index]
+
   def index
   end
 
@@ -16,6 +18,12 @@ class ItemsController < ApplicationController
   end
 
   private
+
+  def move_to_signup
+    unless user_signed_in?
+      redirect_to new_user_registration_path
+    end
+  end
 
   def item_params
     params.require(:item).permit(
