@@ -3,11 +3,11 @@ FactoryBot.define do
     name { "商品" }
     text { "商品の説明" }
     price { 10000 }
-    category_id { 2 }
-    condition_id { 2 }
-    delivery_fee_id { 2 }
-    delivery_from_id { 2 }
-    delivery_day_id { 2 }
+    category { Category.all.sample }
+    condition { Condition.all.sample }
+    delivery_fee { DeliveryFee.all.sample }
+    delivery_from { DeliveryFrom.all.sample }
+    delivery_day { DeliveryDay.all.sample }
     association :user
   end
 end

@@ -32,31 +32,31 @@ RSpec.describe Item, type: :model do
     it "カテゴリー情報がなければ出品できない" do
       @item.category_id = ""
       @item.valid?
-      expect(@item.errors.full_messages).to include("Category must be selected")
+      expect(@item.errors.full_messages).to include("Category can't be blank")
     end
 
     it "商品の状態の情報がなければ出品できない" do
       @item.condition_id = ""
       @item.valid?
-      expect(@item.errors.full_messages).to include("Condition must be selected")
+      expect(@item.errors.full_messages).to include("Condition can't be blank")
     end
 
     it "配送料の負担の情報がなければ出品できない" do
       @item.delivery_fee_id = ""
       @item.valid?
-      expect(@item.errors.full_messages).to include("Delivery fee must be selected")
+      expect(@item.errors.full_messages).to include("Delivery fee can't be blank")
     end
 
     it "発送元の情報がなければ出品できない" do
       @item.delivery_from_id = ""
       @item.valid?
-      expect(@item.errors.full_messages).to include("Delivery from must be selected")
+      expect(@item.errors.full_messages).to include("Delivery from can't be blank")
     end
 
     it "発送までの日数の情報がなければ出品できない" do
       @item.delivery_day_id = ""
       @item.valid?
-      expect(@item.errors.full_messages).to include("Delivery day must be selected")
+      expect(@item.errors.full_messages).to include("Delivery day can't be blank")
     end
 
     it "価格がなければ出品できない" do

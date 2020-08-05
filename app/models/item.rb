@@ -20,14 +20,6 @@ class Item < ApplicationRecord
     validates :image
   end
 
-  with_options numericality: { other_than: 1, message: "must be selected" } do
-    validates :category_id
-    validates :condition_id
-    validates :delivery_fee_id
-    validates :delivery_from_id
-    validates :delivery_day_id
-  end
-
   validates :price, numericality: {
     greater_than_or_equal_to: 300,
     less_than_or_equal_to: 9_999_999,
