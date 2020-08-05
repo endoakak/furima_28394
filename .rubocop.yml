@@ -52,7 +52,7 @@ Metrics/BlockNesting:
 Metrics/ClassLength:
  Enabled: false
 
-# 空メソッドの場合に、1行のスタイルにしない　NG例：def style1; end
+# 空メソッドの場合に、1行のスタイルにしない NG例：def style1; end
 Style/EmptyMethod:
  EnforcedStyle: expanded
 
@@ -66,6 +66,10 @@ Style/AsciiComments:
 
 # # クラスやモジュール定義前に、それらの説明書きがあるかをチェック（無効）
 Style/Documentation:
+ Enabled: false
+
+# シングルクォーテーションかダブルクォーテーションかをチェック（無効）
+Style/StringLiterals:
  Enabled: false
 
 # ％i（）構文を使用していないシンボルで構成される配列リテラルをチェック
