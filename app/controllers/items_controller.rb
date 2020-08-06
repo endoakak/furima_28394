@@ -1,8 +1,8 @@
 class ItemsController < ApplicationController
-  before_action :move_to_signup, except: [:index]
+  before_action :move_to_signup, except: [:index, :show]
 
   def index
-    @items = Item.all.order("created_at DESC")
+    @items = Item.all.order("created_at DESC").includes(:deal)
   end
 
   def new
@@ -16,6 +16,10 @@ class ItemsController < ApplicationController
     else
       render action: :new
     end
+  end
+
+  def show
+    @item = Item.find(params[:id])
   end
 
   private
