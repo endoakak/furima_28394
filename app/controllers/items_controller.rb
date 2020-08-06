@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :move_to_signup, except: [:index]
+  before_action :move_to_signup, except: [:index, :show]
 
   def index
     @items = Item.all.order("created_at DESC").includes(:deal)
