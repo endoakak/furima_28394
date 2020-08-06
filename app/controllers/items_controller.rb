@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :move_to_signup, except: [:index]
 
   def index
+    @items = Item.all.order("created_at DESC")
   end
 
   def new
@@ -21,7 +22,7 @@ class ItemsController < ApplicationController
 
   def move_to_signup
     return if user_signed_in?
-    
+
     redirect_to new_user_registration_path
   end
 
