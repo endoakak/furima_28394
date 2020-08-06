@@ -1,13 +1,16 @@
 module ItemsHelper
-  def is_available(item)
-    if !user_signed_in?
+  def available?(item)
+    # ログインしているかチェック
+    unless user_signed_in?
       return false
     end
 
+    # 出品者ではないかチェック
     if item.user.id == current_user.id
       return false
     end
 
+    # 商品が売り切れていないかチェック
     if item.deal
       return false
     end
@@ -15,11 +18,13 @@ module ItemsHelper
     return true
   end
 
-  def is_owner(item)
-    if !user_signed_in?
+  def owner?(item)
+    # ログインしているかチェック
+    unless user_signed_in?
       return false
     end
 
+    # 出品者であることをチェック
     if item.user.id == current_user.id
       return true
     end
