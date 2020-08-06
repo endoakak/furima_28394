@@ -14,4 +14,16 @@ module ItemsHelper
 
     return true
   end
+
+  def is_owner(item)
+    if !user_signed_in?
+      return false
+    end
+
+    if item.user.id == current_user.id
+      return true
+    end
+
+    return false
+  end
 end
