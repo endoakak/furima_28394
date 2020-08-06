@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :move_to_signup, except: [:index, :show]
+  before_action :set_item, except: [:index, :new, :create]
 
   def index
     @items = Item.all.order("created_at DESC").includes(:deal)
@@ -19,18 +20,15 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
   end
 
   def edit
-    @item = Item.find(params[:id])
     unless @item.user.id == current_user.id
       redirect_to item_path(@item.id)
     end
   end
 
   def update
-    @item = Item.find(params[:id])
     if @item.update(item_params)
       redirect_to item_path(@item.id)
     else
@@ -44,6 +42,10 @@ class ItemsController < ApplicationController
     return if user_signed_in?
 
     redirect_to new_user_registration_path
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 
   def item_params
