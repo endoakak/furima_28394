@@ -16,7 +16,7 @@
     </div>
     <div class="item-price-box">
       <span class="item-price">
-        <%= @item.price %>
+        ¥<%= @item.price %>
       </span>
       <span class="item-postage">
         (税込) 送料込み
@@ -30,7 +30,7 @@
     <% end %>
 
     <% if available?(@item) %>
-    <%= link_to '購入画面に進む', "#" ,class:"item-red-btn"%>
+    <%= link_to '購入画面に進む', new_item_deal_path(@item.id) ,class:"item-red-btn"%>
     <% end %>
 
     <div class="item-explain-box">
