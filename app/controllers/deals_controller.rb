@@ -1,4 +1,6 @@
 class DealsController < ApplicationController
+  before_action :check_permission
+
   def new
     @item = Item.find(params[:item_id])
     @deal = DealShipment.new
@@ -18,6 +20,20 @@ class DealsController < ApplicationController
   end
 
   private
+
+  def check_permission
+    item = Item.find(params[:item_id])
+    # ログインしてなければサインアップ画面へ
+    if !user_signed_in?
+      redirect_to new_user_registration_path
+    # 出品者ならトップ画面へ
+    elsif item.user_id == current_user.id
+      redirect_to root_path
+    # 売り切れならトップ画面へ
+    elsif item.deal
+      redirect_to root_path
+    end
+  end
 
   def deal_params
     params.permit(:token, :item_id, :post_code, :prefecture_id, :city, :address, :building, :phone_number).merge(user_id: current_user.id)
