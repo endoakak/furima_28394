@@ -5,7 +5,7 @@ class DealsController < ApplicationController
     @item = Item.find(params[:item_id])
     @deal = DealShipment.new
   end
-  
+
   def create
     @deal = DealShipment.new(deal_params)
     @item = Item.find(deal_params[:item_id])
@@ -16,7 +16,6 @@ class DealsController < ApplicationController
     else
       render :new
     end
-
   end
 
   private
@@ -36,15 +35,23 @@ class DealsController < ApplicationController
   end
 
   def deal_params
-    params.permit(:token, :item_id, :post_code, :prefecture_id, :city, :address, :building, :phone_number).merge(user_id: current_user.id)
+    params.permit(
+      :token,
+      :item_id,
+      :post_code,
+      :prefecture_id,
+      :city, :address,
+      :building,
+      :phone_number
+    ).merge(user_id: current_user.id)
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]  # PAY.JPテスト秘密鍵
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"] # PAY.JPテスト秘密鍵
     Payjp::Charge.create(
-      amount: @item.price,  # 商品の値段
-      card: deal_params[:token],    # カードトークン
-      currency:'jpy'                 # 通貨の種類
+      amount: @item.price, # 商品の値段
+      card: deal_params[:token], # カードトークン
+      currency: 'jpy' # 通貨の種類
     )
   end
 end

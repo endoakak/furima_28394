@@ -20,7 +20,7 @@ RSpec.describe DealShipment, type: :model do
       @deal_shipment.valid?
       expect(@deal_shipment.errors.full_messages).to include("Post code is invalid. Include hyphen(-)")
     end
-    
+
     it "郵便番号が空だと保存できない" do
       @deal_shipment.post_code = ""
       @deal_shipment.valid?

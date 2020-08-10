@@ -1,5 +1,4 @@
 class DealShipment
-
   include ActiveModel::Model
   attr_accessor :user_id, :item_id, :token, :post_code, :prefecture_id, :city, :address, :building, :phone_number
 
@@ -16,6 +15,13 @@ class DealShipment
 
   def save
     deal = Deal.create(user_id: user_id, item_id: item_id)
-    Shipment.create(post_code: post_code, prefecture_id: prefecture_id, city: city, address: address, building: building, phone_number: phone_number, deal_id: deal.id)
+    Shipment.create(
+      post_code: post_code,
+      prefecture_id: prefecture_id,
+      city: city, address: address,
+      building: building,
+      phone_number: phone_number,
+      deal_id: deal.id
+    )
   end
 end
