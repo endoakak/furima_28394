@@ -31,12 +31,18 @@ class DealsController < ApplicationController
     # 売り切れならトップ画面へ
     elsif item.deal
       redirect_to root_path
+    # カードを登録していなければ登録画面へ
+    elsif !current_user.card.present?
+      redirect_to new_card_path
+    # 全条件をクリアしたらカード情報を取得
+    else
+      customer = Payjp::Customer.retrieve(current_user.card.customer_token)
+      @card = customer.cards.first
     end
   end
 
   def deal_params
     params.permit(
-      :token,
       :item_id,
       :post_code,
       :prefecture_id,
@@ -47,11 +53,11 @@ class DealsController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"] # PAY.JPテスト秘密鍵
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     Payjp::Charge.create(
-      amount: @item.price, # 商品の値段
-      card: deal_params[:token], # カードトークン
-      currency: 'jpy' # 通貨の種類
+      amount: @item.price,
+      customer: current_user.card.customer_token,
+      currency: 'jpy'
     )
   end
 end
