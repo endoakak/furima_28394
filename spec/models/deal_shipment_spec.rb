@@ -18,49 +18,49 @@ RSpec.describe DealShipment, type: :model do
     it "郵便番号にハイフンがないと保存できない" do
       @deal_shipment.post_code = "1234567"
       @deal_shipment.valid?
-      expect(@deal_shipment.errors.full_messages).to include("Post code is invalid. Include hyphen(-)")
+      expect(@deal_shipment.errors.full_messages).to include("郵便番号が正しくありません。ハイフンを含めてください")
     end
 
     it "郵便番号が空だと保存できない" do
       @deal_shipment.post_code = ""
       @deal_shipment.valid?
-      expect(@deal_shipment.errors.full_messages).to include("Post code is invalid. Include hyphen(-)")
+      expect(@deal_shipment.errors.full_messages).to include("郵便番号を入力してください")
     end
 
     it "都道府県が空だと保存できない" do
       @deal_shipment.prefecture_id = ""
       @deal_shipment.valid?
-      expect(@deal_shipment.errors.full_messages).to include("Prefecture can't be blank")
+      expect(@deal_shipment.errors.full_messages).to include("都道府県を入力してください")
     end
 
     it "市区町村が空だと保存できない" do
       @deal_shipment.city = ""
       @deal_shipment.valid?
-      expect(@deal_shipment.errors.full_messages).to include("City can't be blank")
+      expect(@deal_shipment.errors.full_messages).to include("市区町村を入力してください")
     end
 
     it "市区町村に半角文字が入っていると保存できない" do
       @deal_shipment.city = "ﾖｺﾊﾏｼ"
       @deal_shipment.valid?
-      expect(@deal_shipment.errors.full_messages).to include("City is invalid. Input full-width characters.")
+      expect(@deal_shipment.errors.full_messages).to include("市区町村が正しくありません。全角で入力してください")
     end
 
     it "番地が空だと保存できない" do
       @deal_shipment.address = ""
       @deal_shipment.valid?
-      expect(@deal_shipment.errors.full_messages).to include("Address can't be blank")
+      expect(@deal_shipment.errors.full_messages).to include("番地を入力してください")
     end
 
     it "電話番号が空だと保存できない" do
       @deal_shipment.phone_number = ""
       @deal_shipment.valid?
-      expect(@deal_shipment.errors.full_messages).to include("Phone number can't be blank")
+      expect(@deal_shipment.errors.full_messages).to include("電話番号を入力してください")
     end
 
     it "電話番号が12桁以上だと保存できない" do
       @deal_shipment.phone_number = "090123456789"
       @deal_shipment.valid?
-      expect(@deal_shipment.errors.full_messages).to include("Phone number is invalid. Maximun 11 digit number")
+      expect(@deal_shipment.errors.full_messages).to include("電話番号が正しくありません。最大11桁です")
     end
   end
 end
