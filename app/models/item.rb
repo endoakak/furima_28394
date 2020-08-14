@@ -11,6 +11,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :delivery_day
 
   with_options presence: true do
+    validates :image
     validates :name
     validates :text
     validates :category
@@ -18,12 +19,11 @@ class Item < ApplicationRecord
     validates :delivery_fee
     validates :delivery_from
     validates :delivery_day
-    validates :image
   end
 
   validates :price, numericality: {
     greater_than_or_equal_to: 300,
     less_than_or_equal_to: 9_999_999,
-    message: "must be a number between 300 and 9,999,999"
+    message: "は300円から9,999,999円の間で記入してください"
   }
 end
