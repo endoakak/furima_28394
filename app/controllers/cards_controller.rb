@@ -1,5 +1,6 @@
 class CardsController < ApplicationController
   def new
+    @card = Card.new
   end
 
   def create
@@ -9,16 +10,17 @@ class CardsController < ApplicationController
       card: params[:token]
     )
 
-    card = Card.new(
+    @card = Card.new(
       card_token: params[:token],
       customer_token: customer.id,
       user_id: current_user.id
     )
 
-    if card.save
+    if @card.valid?
+      @card.save
       redirect_to root_path
     else
-      redirect_to "new"
+      render "new"
     end
   end
 end
