@@ -24,10 +24,11 @@ ja:
         delivery_from: 発送元の地域
         delivery_day: 発送までの日数
         image: 画像
+      card:
+        card_token: カード
   activemodel:
     attributes:
       deal_shipment:
-        token: カード
         post_code: 郵便番号
         prefecture_id: 都道府県
         city: 市区町村
