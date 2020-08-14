@@ -24,4 +24,5 @@ class User < ApplicationRecord
   validates :birthday, presence: true
   has_many :items
   has_many :deals
+  has_one :card, dependent: :destroy
 end
