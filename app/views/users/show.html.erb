@@ -54,11 +54,33 @@
     <div class='form-text-wrap'>
       <label class="form-text">生年月日</label>
     </div>
-    
     <div class='birth-wrap'>
       <%= current_user.birthday.year %>年
       <%= current_user.birthday.month %>月
       <%= current_user.birthday.day %>日
+    </div>
+  </div>
+  <div class="form-group">
+    <p class='form-info-header'>
+      カード情報
+    </p>
+  </div>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">カード番号</label>
+    </div>
+    <div class='input-name-wrap'>
+      <%= "**** **** **** " + @card[:last4] %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">有効期限</label>
+    </div>
+    <div class='exp-wrap'>
+      <%= @card[:exp_month] %>
+      /
+      <%= @card[:exp_year] %>
     </div>
   </div>
   <div class='register-btn'>
