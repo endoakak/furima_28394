@@ -25,4 +25,5 @@ class User < ApplicationRecord
   has_many :items
   has_many :deals
   has_one :card, dependent: :destroy
+  has_many :comments, dependent: :destroy
 end
