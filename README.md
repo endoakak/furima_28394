@@ -19,6 +19,7 @@
 - has_many :items
 - has_many :deals
 - has_one :card
+- has_many :comments
 
 ## cards テーブル
 
@@ -49,6 +50,19 @@
 ### Association
 - belongs_to :user
 - has_one :deal
+- has_many :comments
+
+## comments テーブル
+
+| Column        | Type    | Options     |
+| ------------- | ------- | ----------- |
+| text          | text    | null: false |
+| user_id       | references | null: false, foreign_key: true |
+| item_id       | references | null: false, foreign_key: true |
+
+### Association
+- belongs_to :user
+- belongs_to :item
 
 ## deals テーブル
 

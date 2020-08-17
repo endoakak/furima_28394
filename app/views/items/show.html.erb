@@ -74,22 +74,35 @@
         <span>不適切な商品の通報</span>
       </div>
     </div>
+    <div class="comment-wrapper" id="comment-wrapper">
+      <div class="comment-title">コメント・質問</div>
+      <% @item.comments.each do |comment| %>
+      <div class="comment-block">
+        <div class="comment-user">
+          <%= comment.user.nick_name %>
+          <% if comment.user_id == current_user.id %>
+            <%= link_to "削除する", item_comment_path(@item.id, comment.id), method: :delete, class:"delete-btn" %>
+          <% end %>
+        </div>
+        <div class="comment-content">
+          <%= comment.text %>
+        </div>
+      </div>
+      <% end %>
+    </div>
   </div>
   <%# /商品の概要 %>
 
   <div class="comment-box">
-    <form>
-      <textarea class="comment-text"></textarea>
+    <%=  form_with model: @comment, url: item_comments_path(@item.id), local: true do |f| %>
+      <%= f.text_area :text, class:"comment-text", id:"comment-text", placeholder:"コメント（200文字まで)", maxlength:"200" %>
       <p class="comment-warn">
         相手のことを考え丁寧なコメントを心がけましょう。
         <br>
         不快な言葉遣いなどは利用制限や退会処分となることがあります。
       </p>
-      <button type="submit" class="comment-btn">
-        <%= image_tag "comment.png" ,class:"comment-flag-icon" ,width:"20",height:"25"%>
-        <span>コメントする<span>
-      </button>
-    </form>
+      <%= f.submit "コメントする", class:"comment-btn" %>
+    <% end %>
   </div>
   <div class="links">
     <%= link_to "＜ 前の商品", "#", class: "change-item-btn" %>
