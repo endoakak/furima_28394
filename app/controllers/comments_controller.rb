@@ -1,7 +1,12 @@
 class CommentsController < ApplicationController
   def create
-    comment = Comment.new(comment_params)
-    @comments = Comment.find_by(item_id: params[:item_id])
+    @comment = Comment.new(comment_params)
+    @item = Item.find(params[:item_id])
+    if @comment.save
+      redirect_to item_path(@item.id)
+    else
+      render template: "items/show"
+    end
   end
 
   private

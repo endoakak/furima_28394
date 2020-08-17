@@ -74,12 +74,25 @@
         <span>不適切な商品の通報</span>
       </div>
     </div>
+    <div class="comment-wrapper" id="comment-wrapper">
+      <div class="comment-title">コメント・質問</div>
+      <% @item.comments.each do |comment| %>
+      <div class="comment-block">
+        <div class="comment-user">
+          <%= comment.user.nick_name %>
+        </div>
+        <div class="comment-content">
+          <%= comment.text %>
+        </div>
+      </div>
+      <% end %>
+    </div>
   </div>
   <%# /商品の概要 %>
 
   <div class="comment-box">
     <%=  form_with model: @comment, url: item_comments_path(@item.id), local: true do |f| %>
-      <%= f.text_area :text, class:"comment-text", placeholder:"コメント（200文字まで)", maxlength:"200" %>
+      <%= f.text_area :text, class:"comment-text", id:"comment-text", placeholder:"コメント（200文字まで)", maxlength:"200" %>
       <p class="comment-warn">
         相手のことを考え丁寧なコメントを心がけましょう。
         <br>
