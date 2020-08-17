@@ -20,6 +20,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @comment = Comment.new(item_id: @item.id)
   end
 
   def edit
