@@ -166,6 +166,16 @@
   font-size: 16px;
 }
 
+.delete-btn {
+  text-decoration: none;
+  background-color: orangered;
+  font-size: 10px;
+  font-weight: lighter;
+  padding: 5px;
+  color: white;
+  border-radius: 10px;
+}
+
 /* /商品の概要 */
 
 .comment-box {

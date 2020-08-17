@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :move_to_signup, except: [:index, :show]
-  before_action :set_item, except: [:index, :new, :create, :show]
+  before_action :set_item, except: [:index, :new, :create]
 
   def index
     @items = Item.all.order("created_at DESC").includes(:deal)
@@ -20,7 +20,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id]).includes(:comment)
     @comment = Comment.new(item_id: @item.id)
   end
 
