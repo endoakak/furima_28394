@@ -1,4 +1,4 @@
-if (window.location.pathname === "/items/new") {
+if (/items.*edit|new/.test(window.location.pathname)) {
   document.addEventListener("DOMContentLoaded", function() {
     const ImagePreview = document.getElementById("item-image")
     document.getElementById("image-upload").addEventListener("change", function(e) {
