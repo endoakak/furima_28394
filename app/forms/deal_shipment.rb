@@ -1,8 +1,7 @@
 class DealShipment
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :token, :post_code, :prefecture_id, :city, :address, :building, :phone_number
+  attr_accessor :user_id, :item_id, :post_code, :prefecture_id, :city, :address, :building, :phone_number
 
-  validates :token, presence: { message: "の入力に誤りがあります" }
   with_options presence: true do
     validates :user_id
     validates :item_id
