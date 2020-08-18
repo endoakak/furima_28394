@@ -80,8 +80,10 @@
       <div class="comment-block">
         <div class="comment-user">
           <%= comment.user.nick_name %>
-          <% if comment.user_id == current_user.id %>
-            <%= link_to "削除する", item_comment_path(@item.id, comment.id), method: :delete, class:"delete-btn" %>
+          <% if user_signed_in? %>
+            <% if comment.user_id == current_user.id %>
+              <%= link_to "削除する", item_comment_path(@item.id, comment.id), method: :delete, class:"delete-btn" %>
+            <% end %>
           <% end %>
         </div>
         <div class="comment-content">
@@ -93,6 +95,7 @@
   </div>
   <%# /商品の概要 %>
 
+  <% if user_signed_in? %>
   <div class="comment-box">
     <%=  form_with model: @comment, url: item_comments_path(@item.id), local: true do |f| %>
       <%= f.text_area :text, class:"comment-text", id:"comment-text", placeholder:"コメント（200文字まで)", maxlength:"200" %>
@@ -104,6 +107,7 @@
       <%= f.submit "コメントする", class:"comment-btn" %>
     <% end %>
   </div>
+  <% end %>
   <div class="links">
     <%= link_to "＜ 前の商品", "#", class: "change-item-btn" %>
     <%= link_to "後ろの商品 ＞", "#", class: "change-item-btn" %>
