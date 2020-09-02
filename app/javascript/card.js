@@ -1,6 +1,7 @@
 window.addEventListener("load", function() {
   if (document.URL.match("cards")){
     Payjp.setPublicKey(process.env.PAYJP_PUBLIC_KEY);
+    console.log(process.env.PAYJP_PUBLIC_KEY);
     const form = document.getElementById("charge-form");
     form.addEventListener("submit", (e) => {
       e.preventDefault();
@@ -21,8 +22,10 @@ window.addEventListener("load", function() {
           const renderDom = document.getElementById("charge-form");
           const tokenObj = `<input value=${token} type="hidden" name='token'>`;
           renderDom.insertAdjacentHTML("beforeend", tokenObj);
+          console.log("hey!");
         } else {
         }
+        console.log("hello");
         document.getElementById("number").removeAttribute("name");
         document.getElementById("cvc").removeAttribute("name");
         document.getElementById("exp_month").removeAttribute("name");
